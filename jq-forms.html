@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery - Forms</title>
+<link rel="stylesheet" href="css/jq-forms.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>jQuery Form Enhancement</h1>
+	</header>
+	<section>
+    
+    <form name="contactForm">
+      <p><label for="name">*Name:</label><br>
+        <input type="text" name="user" id="user">
+      </p>
+      <p><label for="name">*Phone:</label><br>
+        <input type="text" name="phone" id="phone" placeholder="Please include area code">
+      </p>
+      <p><label for="name">*Email:</label><br>
+        <input type="text" name="email" id="email">
+      </p>
+      <p><label for="marital">*Marital Status:</label><br>
+        <input type="radio" name="marital" id="single">Single<br>
+        <input type="radio" name="marital" id="married">Married<br>
+        <input type="radio" name="marital" id="divorced">Divorced<br>
+      </p>
+      <p><label for="ssn">Social Security Number:</label><br>
+        <input type="text" name="ssn" id="ssn">
+      </p>
+      <p><label for="spouseSSN" id="spouseSSNLabel">Spouse's Social Security Number:</label><br>
+        <input type="text" name="spouseSSN" id="spouseSSN">
+      </p>
+      <p><input type="submit" name="submit" id="submit" value="Send It!">
+      <span class="errorMsg"></span></p>
+    </form>
+   
+    <p class="required">* required</p>
+    
+  <!-- Put the cusor in the first field -->
+    <script>
+  		$("#user").focus();
+    </script>
+  
+  <!-- When "single" is selected then spouse info fields are disabled -->
+    <script>
+ 		$("#single").click(function(){
+			$("#spouseSSN").prop("disabled", true);
+		});
+		$("#married").click(function(){
+			$("#spouseSSN").prop("disabled", false);
+		});
+		$("#divorced").click(function(){
+			$("#spouseSSN").prop("disabled", false);
+		});
+    </script>
+    
+  <!-- When "single" is selected then spouse info fields disappear -->   
+    <script>
+    $("#single").click(function(){
+			$("#spouseSSN").hide();
+		});
+	$("#single").click(function(){
+			$("#spouseSSNLabel").hide();
+		});
+		$("#married").click(function(){
+			$("#spouseSSN").show();
+		});
+	$("#married").click(function(){
+			$("#spouseSSNLabel").show();
+		});
+		$("#divorced").click(function(){
+			$("#spouseSSN").show();
+		});
+	$("#divorced").click(function(){
+			$("#spouseSSNLabel").show();
+		});
+    </script>
+
+  <!-- This code validates form fields when the submit button is clicked -->
+    <script>
+    	$("#submit").click(function(){
+			if($("#user").val() == ""){
+				$("#user").focus();
+				$("#user").css("border", "2px solid red");
+				$(".errorMsg").text("Name is required.");
+				return false;
+			}
+			if($("#phone").val() == ""){
+				$("#phone").focus();
+				$("#phone").css("border", "2px solid red");
+				$(".errorMsg").text("Phone number is required.");
+				return false;
+			}
+			if($("#email").val() == ""){
+				$("#email").focus();
+				$("#email").css("border", "2px solid red");
+				$(".errorMsg").text("Email is required.");
+				return false;
+			}
+		
+    if($("input[name=marital]:checked").length <= 0) {
+        $("input[name=marital]").css("outline", "2px solid red");
+        $(".errorMsg").text("Marital status is required.");
+        return false; // will stay at htis field until it returns true
+      } 
+     var userName = $("#user").val();
+      $(".errorMsg").css("color", "mediumblue").text("Thanks " + userName + "!");
+      return false;
+    });
+    </script>
+ 
+	</section>
+  
+</body>
+</html>

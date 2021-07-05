@@ -1,0 +1,52 @@
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+header {
+	background-color: #801a38;
+	padding: 0.5em 0;
+	margin-bottom: 2em;
+	text-align: center;
+	color: #fff;
+}
+
+section {
+	margin: auto;
+  margin-top: -10px;
+	width: 33%;
+	font-size: 125%;
+  border: 3px solid #999;
+  padding: 10px 20px;
+  position: relative;
+  background-color: peachpuff;
+}
+
+input {
+  font-size: 100%;
+  outline: none;
+}
+
+input::placeholder {
+  font-size: 90%;
+  font-style: italic;
+  color: #999;
+}
+
+.errorMsg {
+  text-align: right;
+  color: red;
+  font-weight: 700;
+  padding-left: 2em;
+}
+
+#submit {
+  color: mediumblue;
+}
+
+.required {
+  font-size: 90%;
+  font-weight: 300;
+  font-style: italic;
+  color: #333;
+}
